@@ -11,6 +11,17 @@ void display_temperature_scale(int scale);
 // Function to clear input buffer after scanf
 void clear_input_buffer(void);
 
+
+
+/**
+ * @brief Clear the input buffer to avoid issues with subsequent inputs
+ */
+void clear_input_buffer(void) {
+    int c;  // Variable to store each character read
+    // Read and discard characters until newline or EOF is encountered
+    while ((c = getchar()) != '\n' && c != EOF) { }  // Empty loop body - just discarding characters
+}
+
 /**
  * Main function to execute the temperature conversion utility
  */
@@ -24,7 +35,7 @@ int main(int argc, char *argv[]) {  // Main function with command line arguments
     int valid_input;         // Flag for validating input
     char scale_symbols[4] = {' ', 'C', 'F', 'K'}; // Array of symbols for temperature scales (index 0 unused)
 
-    printf("Temperature Conversion Utility\n");  // Print program title
+    printf("Temperature Conversion Program\n");  // Print program title
     printf("-----------------------------\n\n");  // Print separator line
 
     // Start main program loop
@@ -138,14 +149,5 @@ void display_temperature_scale(int scale) {
         default:  // Invalid scale
             printf("Unknown scale");  // Print error message
     }
-}
-
-/**
- * @brief Clear the input buffer to avoid issues with subsequent inputs
- */
-void clear_input_buffer(void) {
-    int c;  // Variable to store each character read
-    // Read and discard characters until newline or EOF is encountered
-    while ((c = getchar()) != '\n' && c != EOF) { }  // Empty loop body - just discarding characters
 }
 
